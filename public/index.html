@@ -1,0 +1,126 @@
+<html ng-app="ccffe">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" src="/bower_components/angular-material/angular-material.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-cookies.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+<script type="text/javascript">
+var app = angular.module('ccffe', ['ngRoute', 'ngCookies', 'ngMaterial', 'ngAria', 'ngMessages']);
+app.config(function($routeProvider, $locationProvider) {
+    $routeProvider.when('/', {
+        templateUrl: 'main.html',
+        controller: 'mainctrl'
+
+    });
+});
+app.controller('mainctrl', function($scope, $http) {
+    function refresh() {
+        $http.get('/d').then(function(response) {
+            $scope.data = response.data;
+            $scope.sem = ('1 2 3 4 5 6 7 8').split(' ').map(function(semc) {
+                return {
+                    abbrev: semc
+                };
+            });
+            $scope.br = ('AE CE CS EC EE IE ME').split(' ').map(function(brn) {
+                return {
+                    abbrev: brn
+                };
+            });
+            $scope.project = {
+    description: '',
+    rate: 500
+  };
+            $scope.myDate = new Date();
+            $scope.minDate = new Date(
+                $scope.myDate.getFullYear(),
+                $scope.myDate.getMonth() - 2,
+                $scope.myDate.getDate());
+            $scope.maxDate = new Date(
+                $scope.myDate.getFullYear(),
+                $scope.myDate.getMonth() + 2,
+                $scope.myDate.getDate());
+            $scope.onlyWeekendsPredicate = function(date) {
+                var day = date.getDay();
+                return day === 0 || day === 6;
+            };
+        });
+    }
+    refresh();
+    /*$scope.login = function() {
+        var user = {
+            username: $scope.username,
+            password: $scope.password
+        };
+        $http.put('/users/signin', user).then(function(res) {
+            $cookies.put('token',res.data.token);
+            $cookies.put('currentUser',$scope.username);
+            $rootScope.token=res.data.token;
+            $rootScope.currentUser=$scope.username;
+        }, function(err) {
+            alert('login failed');
+        });
+    };
+    $scope.logout = function() {
+            $cookies.remove('token');
+            $cookies.remove('currentUser');
+            $rootScope.token=null;
+            $rootScope.currentUser=null;
+    };
+    $scope.remove = function(data) {
+        $http.put('/new/remove', {
+            det: data
+        },{headers:{'authorization':$rootScope.token}}).then(function() {
+            refresh();
+        });
+    };
+    $scope.submit = function() {
+        $http.post('/new', {share: $scope.share},{headers:{'authorization':$rootScope.token}}).then(function() {
+            refresh();
+            $scope.share = '';
+        });
+    };*/
+
+    $scope.sub=function(){
+        var evnt={
+        name:$scope.name,
+        semester:$scope.semester,
+        branch:$scope.branch,
+        org:$scope.org,
+        date:$scope.date,
+        email:$scope.emailid,
+        phone:$scope.phone,
+        desc:$scope.describe
+    };
+    console.log(evnt);
+    $http.post('/submit',evnt).then(function() {
+            alert('Data Submitted');
+        });
+    };
+
+});
+</script>
+
+<head>
+    <title>Amrith</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h1><a href="#/">CCF Automate</a></h1>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div ng-view></div>
+</body>
+
+</html>

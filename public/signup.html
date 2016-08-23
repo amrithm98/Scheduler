@@ -1,0 +1,25 @@
+<h2>Sign Up Here!</h2>
+<br>
+<form name="mf">
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>Name</label>
+        <input required name="clientUser" ng-model="name">
+        <div ng-messages="mf.clientUser.$error">
+            <div ng-message="required">This is required.</div>
+        </div>
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>Username</label>
+        <input required name="clientName" ng-model="username">
+        <div ng-messages="mf.clientName.$error">
+            <div ng-message="required">This is required.</div>
+        </div>
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>Password</label>
+        <input required name="clientPass" ng-model="password">
+        <div ng-messages="mf.clientPass.$error">
+            <div ng-message="required">This is required.</div>
+        </div>
+        <md-button class="md-raised" ng-click="reg()" ng-disabled="mf.$invalid">Sign Up</md-button>
+</form>
