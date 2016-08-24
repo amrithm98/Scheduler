@@ -2,13 +2,20 @@
   "name": "ccfautomate",
   "version": "1.0.0",
   "dependencies": {
+    "alphamail": "^1.1.5",
     "angular-material": "^1.1.0-rc.5",
     "body-parser": "^1.15.2",
+    "email-verification": "^0.4.5",
+    "emailjs": "^1.0.5",
     "express": "^4.14.0",
-    "mongodb": "^2.2.5"
+    "mongodb": "^2.2.5",
+    "mongoose": "^4.5.10",
+    "nodemailer": "^2.5.0",
+    "postmark": "^1.2.1",
+    "xoauth2": "^1.2.0"
   },
   "scripts": {
-  "start": "node server.js"
-},
-"main": "server.js"
+    "start": "node server.js"
+  },
+  "main": "server.js"
 }

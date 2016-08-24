@@ -2,56 +2,57 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Name</label>
-                    <input ng-model="name">
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Semester</label>
-                    <md-select ng-model="semester">
-                        <md-option ng-repeat="s in sem" value="{{s.abbrev}}">
-                            {{s.abbrev}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Branch</label>
-                    <md-select ng-model="branch">
-                        <md-option ng-repeat="b in br" value="{{b.abbrev}}">
-                            {{b.abbrev}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Organisation</label>
-                    <input ng-model="org">
-                </md-input-container>
-                <div flex-gt-xs>
-                    <h4>Choose Event Date</h4>
-                    <md-datepicker ng-model="date" md-placeholder="Enter date"></md-datepicker>
+            <md-input-container class="md-block md-icon-float" flex-gt-sm>
+                <label>Name</label>
+                <input ng-model="name">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Semester</label>
+                <md-select ng-model="semester">
+                    <md-option ng-repeat="s in sem" value="{{s.abbrev}}">
+                        {{s.abbrev}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Branch</label>
+                <md-select ng-model="branch">
+                    <md-option ng-repeat="b in br" value="{{b.abbrev}}">
+                        {{b.abbrev}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Organisation</label>
+                <input ng-model="org">
+            </md-input-container>
+            <div flex-gt-xs>
+                <h4>Choose Event Date</h4>
+                <md-datepicker ng-model="date" md-placeholder="Enter date"></md-datepicker>
+            </div>
+            <md-input-container class="md-block">
+                <label>Email</label>
+                <input required type="email" name="mail" ng-model="emailid" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                <div ng-messages="projectForm.clientEmail.$error" role="alert">
+                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                        Your email must be between 10 and 100 characters long and look like an e-mail address.
+                    </div>
                 </div>
-                <md-input-container class="md-block">
-                    <label>Email</label>
-                    <input required type="email" name="mail" ng-model="emailid" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
-                    <div ng-messages="projectForm.clientEmail.$error" role="alert">
-                        <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                            Your email must be between 10 and 100 characters long and look like an e-mail address.
-                        </div>
-                    </div>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Mobile Number</label>
-                    <input ng-model="phone">
-                </md-input-container>
-                <md-input-container class="md-block">
-                    <label>Event Description</label>
-                    <input md-maxlength="100" required md-no-asterisk name="description" ng-model="describe">
-                    <div ng-messages="projectForm.description.$error">
-                        <div ng-message="required">This is required.</div>
-                        <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
-                    </div>
-                </md-input-container>
-                <md-button class="md-raised md-primary" ng-click="sub()">Submit</md-button>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Mobile Number</label>
+                <input ng-model="phone">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Event Description</label>
+                <input md-maxlength="100" required md-no-asterisk name="description" ng-model="describe">
+                <div ng-messages="projectForm.description.$error">
+                    <div ng-message="required">This is required.</div>
+                    <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+                </div>
+            </md-input-container>
+            <md-button class="md-raised md-primary" ng-click="sub()">Submit</md-button>
+            <md-button class="md-raised md-default" ng-click="clear()">Clear</md-button>
         </div>
         <div class="col-md-3"></div>
     </div>
