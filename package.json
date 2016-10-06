@@ -1,0 +1,25 @@
+{
+  "name": "ccfautomate",
+  "version": "1.0.0",
+  "dependencies": {
+    "alphamail": "^1.1.5",
+    "angular-google-plus": "^0.1.2",
+    "angular-material": "^1.1.0-rc.5",
+    "angular-material-calendar": "^0.2.14",
+    "body-parser": "^1.15.2",
+    "email-verification": "^0.4.5",
+    "emailjs": "^1.0.5",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.5",
+    "mongoose": "^4.5.10",
+    "ng-google-signin": "^0.1.0",
+    "nodemailer": "^2.5.0",
+    "postmark": "^1.2.1",
+    "satellizer": "^0.15.5",
+    "xoauth2": "^1.2.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "server.js"
+}
